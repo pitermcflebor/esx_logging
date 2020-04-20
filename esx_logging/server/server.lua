@@ -81,9 +81,9 @@ if Config.logCommands then
 	end)
 end
 
--- REGISTER PLAYER CONNECTED
-if Config.logJoin then
+-- REGISTER PLAYER CONNECTED   todo
+--[[ if Config.logJoin then
 	Citizen.CreateThread(function()
 		AddEventHandler('onPlayerConnect')
 	end)
-end
+end]]
