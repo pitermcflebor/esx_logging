@@ -16,6 +16,8 @@
 - Download the latest version
 - Put the folder in your **[resources]** folder
 - Add `start esx_logging` under `start mysql-async` and `start es_extended`
+- Insert the .sql file into your MySQL server
+- Run your server
 ### Add this to [chat/cl_chat.lua]
 - After line 111 `TriggerEvent('logging:executeCommand', {id=PlayerId(), msg=data.message})`
 - After line 114 `TriggerEvent('logging:newMessage', {id=PlayerId(), msg=data.message})`
