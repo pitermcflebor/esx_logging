@@ -1,4 +1,4 @@
-version "1.0.0"
+version "1.0.1"
 --[[ 
 
 #			     DISCLAIMER
@@ -18,6 +18,12 @@ INSTALLATION:
 	- Add `start esx_logging` to your server.cfg file || IMPORTANT, PLACE IT AFTER `start es_extended` AND `start mysql-async`
 	- Run your server
 
+
+PATCH NOTES:
+	1.0.1:
+		- Added version check
+	1.0.0:
+		- First release
 
 ]]
 

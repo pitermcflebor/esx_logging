@@ -123,16 +123,15 @@ end
 
 function checkVersion()
 	local currentVersion = GetResourceMetadata(GetCurrentResourceName(), "version")
-	Citizen.Wait(2000)
-	PerformHttpRequest("https://pitermcflebor.github.io/esx_logging/version.txt", function(err, text, headers)
-		if (text ~= nil) then
+	PerformHttpRequest("https://pitermcflebor.github.io/esx_logging/version.txt", function(code, text, headers)
+		if code == 200 then
 			if text == currentVersion then
-				return true
+				print('[^3ESX_LOGGING^7]: Up to date!')
 			else
-				return false, 411, (error[411]):format(currentVersion, text)
+				print('[^1ESX_LOGGING^7]:', 411, (error[411]):format(currentVersion, text))
 			end
 		else
-			return true, 412, error[412]
+			print(412, (error[412]):format(code))
 		end
 	end)
 end

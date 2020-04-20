@@ -20,8 +20,8 @@ error = {
 	[408] = 'description of that type does not exist',
 	[409] = 'these type(s) does not have a description: "%s". Check config.lua',
 	[410] = 'these description(s) does not have a type: "%s". We can continue with them.',
-	[411] = 'outdated version, you are running %sv and there is a %sv',
-	[412] = 'can\'t check version, something went wrong'
+	[411] = 'mismatched version, you are running %sv and there is a %sv',
+	[412] = 'can\'t check version, something went wrong (code: %s)'
 }
 
 --====================--
@@ -35,19 +35,13 @@ if MySQL ~= nil then
 		if not checkPassed then
 			print(('[^1ESX_LOGGING^7]: %s %s'):format(errorCode, errorText))
 		else
-			-- TODO VERSION CHECK
-			--[[ local versionPassed, verrorCode, verrorText = checkVersion() ]]
-			--[[ if versionPassed then ]]
-				if errorCode ~= nil and errorText ~= nil then
-					print(('[^3ESX_LOGGING^7]: System badly ready. %s %s'):format(errorCode, errorText))
-				else
-					print('[^3ESX_LOGGING^7]: System ready.')
-				end
-				--[[ if verrorCode ~= nil then
-					print(('[^1ESX_LOGGING^7]: %s %s'):format(verrorCode, verrorText))
-				end ]]
-				ready2work = true
-			--[[ end ]]
+			Citizen.CreateThread(function() checkVersion() end) -- check version without stoping code
+			if errorCode ~= nil and errorText ~= nil then
+				print(('[^3ESX_LOGGING^7]: System badly ready. %s %s'):format(errorCode, errorText))
+			else
+				print('[^3ESX_LOGGING^7]: System ready.')
+			end
+			ready2work = true
 		end
 	end)
 else
