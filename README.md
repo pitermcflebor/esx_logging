@@ -2,7 +2,7 @@
  Advanced ESX logging for commands, messages, items, etc
 
 ## Images
-- How it sees on DB
+- How it's seen in DB
 ![db example](https://i.imgur.com/6qGiyCQ.png)
 - How errors are shown
 ![1_example](https://i.imgur.com/h2t5zib.png)
